@@ -1,4 +1,5 @@
 import {
+  Button,
   HStack,
   Image,
   Link,
@@ -12,14 +13,16 @@ import getCroppedImageUrl from "../services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 import GenreListContainer from "./GenreListContainer";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading } = useGenres();
 
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
-
-  console.log(data);
 
   return (
     <List>
@@ -38,9 +41,14 @@ const GenreList = () => {
               borderRadius={8}
               src={getCroppedImageUrl(genre.image_background)}
             />
-            <Text fontSize="lg" marginLeft={4}>
+            <Button
+              onClick={() => onSelectGenre(genre)}
+              fontSize="lg"
+              marginLeft={2}
+              variant="link"
+            >
               {genre.name}
-            </Text>
+            </Button>
           </HStack>
         </ListItem>
       ))}
