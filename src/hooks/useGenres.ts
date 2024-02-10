@@ -1,5 +1,7 @@
 
 import genres from "../data/genres"
+import apiClient from "../services/api-client";
+
 
 export interface Genre {
     id: number,

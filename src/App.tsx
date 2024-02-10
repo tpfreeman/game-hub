@@ -31,6 +31,7 @@ function App() {
         base: "lfr",
         lg: "300px 1fr",
       }}
+      paddingRight={4}
     >
       <GridItem area="nav">
         <NavBar
